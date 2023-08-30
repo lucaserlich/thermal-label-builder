@@ -129,6 +129,7 @@
     // if (!window.JsBarcode) apendScriptInThisPage('https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js').then((r) => r()).catch(error => console.log(error));
     // if (!window.jspdf) apendScriptInThisPage('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js').then((r) => r()).catch(error => console.log(error));
     
+    // Comment this if you not have a server
     if (!window.jQuery) apendScriptInThisPage('./js/jquery.min.js').then((r) => r()).catch(error => console.log(error));
     if (!window.html2canvas) apendScriptInThisPage('./js/html2canvas.min.js').then((r) => r()).catch(error => console.log(error));
     if (!window.JsBarcode) apendScriptInThisPage('./js/JsBarcode.all.min.js').then((r) => r()).catch(error => console.log(error));
