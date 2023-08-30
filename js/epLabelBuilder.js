@@ -158,20 +158,22 @@ function applyEventsOnElement(el, propertie) {
 }
 
 function updateTextOfSelectedElement(element) {
-    if (!element.attr('id').startsWith('barcode')) $('#selected-element').html(`${element.attr('data-value')} <span class="text-xs">(${element.attr('id')})</span>`);
-    else $('#selected-element').html(`${element.find('canvas').attr('data-code-tag')} (<span class="text-xs">${element.attr('id')}</span>)`);
+    if (element) {
+        const value = element.attr('id').startsWith('barcode') ? element.find('canvas').attr('data-code-tag') : element.attr('data-value');
+        $('#selected-element').html(`${value ? value : '?'} <span class="text-xs">(${element.attr('id')})</span>`);
+    } else $('#selected-element').html('Nenhum elemento selecionado');
 }
 
 function updateTextInListOfElement(element) {
-    if (!element.attr('id').startsWith('barcode')) $('#elements-list').find(`li[data-id="${element.attr('id')}"]`).find(`span[data-id="data-value"]`).html(element.attr('data-value'));
-    else $('#elements-list').find(`li[data-id="${element.attr('id')}"]`).find(`span[data-id="data-value"]`).html(element.find('canvas').attr('data-code-tag'));
+    if (!element) return;
+
+    const value = element.attr('id').startsWith('barcode') ? element.find('canvas').attr('data-code-tag') : element.attr('data-value');
+    $('#elements-list').find(`li[data-id="${element.attr('id')}"]`).find(`span[data-id="data-value"]`).html(value);
 }
 
 function setTarget(element) {
     target = element;
     if (element) {
-        updateTextOfSelectedElement(element);
-
         $('#input-width').val(parseFloat(target.css('width')));
         $('#input-height').val(parseFloat(target.css('height')));
         $('#input-top').val(parseFloat(target.css('top')));
@@ -217,7 +219,9 @@ function setTarget(element) {
                 $('#input-value').val('');
                 break;
         }
-    } else $('#selected-element').html('Nenhum elemento selecionado');
+    } 
+
+    updateTextOfSelectedElement(element);
 }
 
 function clickEvent(event) {
@@ -388,6 +392,7 @@ function setElementsList() {
 
 function addElementInListOfElements(el) {
     if (el.attr('id')) {
+        const value = el.attr('id').startsWith('barcode') ? el.find('canvas').attr('data-code-tag') : el.attr('data-value');
         $('#elements-list').append($(`
                 <li data-id="${el.attr('id')}" onclick="focusElement('${el.attr('id')}')" class="cursor-pointer list-none flex align-middle hover:bg-gray-100 hover:text-blue-600 p-2 m-1 rounded-lg">
                     <button onclick="duplicateElement('${el.attr('id')}')" class="hover:text-green-500 hover:border-green-500 cursor-pointer border-solid border-gray-300 bg-gray-100 border-[1px] rounded-lg active:bg-green-50">
@@ -398,7 +403,7 @@ function addElementInListOfElements(el) {
                     <div class="p-2 flex-auto flex-col">
                         <div class="text-xs leading-3">${el.attr('id')}</div>
                         <span data-id="data-value">
-                            ${el.attr('id').startsWith('barcode') ? el.find('canvas').attr('data-code-tag') : el.attr('data-value')}
+                            ${value ? value : '?'}
                         </span>
                     </div>
                     <button onclick="removeElement('${el.attr('id')}')" class="hover:text-red-500 hover:border-red-600 cursor-pointer border-solid border-gray-300 bg-gray-100 border-[1px] rounded-lg float-right relative active:bg-red-50">
