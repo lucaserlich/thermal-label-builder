@@ -1,0 +1,64 @@
+.drops {
+    list-style: none;
+    position: absolute;
+    display: block;
+    height: 10px;
+    width: 140px;
+    margin: auto; /* center the animation */
+   /* margin-top: 40px; /* padd the top from the text */
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+  }
+  .drops li {
+    position: absolute;
+    top: 0px;
+    height: 10px;
+    width: 10px;
+    background-color: black;
+    border-radius: 5px;
+    margin-left: -3000px; /* the dots like to jump out of place without this */
+    animation-name: loading;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+  }
+  .drops li:nth-child(1) {
+    left: 0px;
+    animation-delay: 250ms;
+  }
+  .drops li:nth-child(2) {
+    left: 40px;
+    animation-delay: 500ms;
+  }
+  .drops li:nth-child(3) {
+    left: 80px;
+    animation-delay: 750ms;
+  }
+  .drops li:nth-child(4) {
+    left: 120px;
+    animation-delay: 1s;
+  }
+  .drops li:nth-child(5) {
+    left: 160px;
+    animation-delay: 1.25s;
+  }
+  @keyframes loading {
+    0% { margin-left: -3000px; }
+    30%,70% { margin-left: 0px; }
+    100% { margin-left: 3000px; }
+  }
+  
+  .blue li {
+    background-color: #99deff;
+    box-shadow: 0 0 5px #99afff, 
+                0 0 10px #99afff, 
+                0 0 15px #99afff, 
+                0 0 20px #99afff, 
+                0 0 30px #99afff, 
+                s0 0 40px #99afff;
+  }
+  /* Presentation - toggle buttons and positioning/backgrounds */
+  

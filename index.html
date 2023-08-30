@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jsBarcode.all.min.js"></script>
+    <script defer src="./js/epLabelPrint.js"></script>
+    <script src="./js/tailwind.js"></script>
+    <script src="./js/tailwind.config.js"></script>
+    <script defer>tailwind.config = getTailwindConfig();</script>
+
+    <script src="./js/jquery-ui.min.js"></script>
+    <script src="./js/jquery.ui.rotatable.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./css/jquery-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/jquery.ui.rotatable.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="h-full m-0 lg:overflow-hidden bg-gray-50 font-sans">
+    <div id="loading"
+            style="display: none; position: fixed; width: 100%; height: 100%; z-index: 9999; background: rgb(0, 0, 0, 0.5);">
+            <ul class="drops blue">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+    <div class="lg:hidden">
+        <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-solid border-b border-t-0 border-l-0 border-r-0 border-gray-200 bg-white m-0"
+            id="tabs">
+            <li class="mr-2 list-none">
+                <a href="#" onclick="activateTab(event)" data-tab-id="tab" data-tab="palette" aria-current="page"
+                    class="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg active no-underline">Paleta</a>
+            </li>
+            <li class="mr-2 list-none">
+                <a href="#" onclick="activateTab(event)" data-tab-id="tab" data-tab="tag"
+                    class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 no-underline">Etiqueta</a>
+            </li>
+            <li class="mr-2 list-none">
+                <a href="#" onclick="activateTab(event)" data-tab-id="tab" data-tab="settings"
+                    class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 no-underline">Opções</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="lg:h-screen lg:flex h-auto">
+        <div class="lg:flex lg:flex-1 h-aut" id="tab">
+            <div class="lg:flex lg:w-1/4 lg:h-full overflow-hidden overflow-y-auto w-full h-auto p-4 lg:border-solid lg:border-r lg:border-b-0 lg:border-t-0 lg:border-l-0 lg:border-gray-200 box-border active"
+                id="palette" tab-content>
+                <div class="w-full h-min">
+                    <div class="hidden h-fit">
+                        <span id="span" tabindex="1" data-id="span"
+                            style="overflow: hidden; cursor: move; position: hidden; display: flex; align-items: baseline; font-family: Arial; z-index: 1; height: fit-content;">Texto</span>
+                        <div id="img" tabindex="1" data-id="img"
+                            style="display:inline-block; overflow: hidden; cursor: move; position: hidden; z-index: 1; height: fit-content;">
+                            <img tabindex="-1" src="https://www.google.com.br/images/srpr/logo3w.png" alt=""
+                                style="width: 100%; height: 100%;" />
+                        </div>
+                        <hr id="hr" tabindex="1" data-id="hr" size="10"
+                            style="width: 50px; border-width: 1px 0px 0px 0px; border-style: solid; border-color: rgb(0, 0, 0); overflow: hidden; cursor: move; position: hidden; z-index: 1; height: fit-content;">
+                        <div id="barcode" tabindex="1" data-id="barcode" data-code-tag="${codigo}"
+                            style="display:inline-block; overflow: hidden; cursor: move; position: hidden; z-index: 1; height: fit-content;">
+                            <canvas class="w-full block my-0 mx-auto" data-format="EAN13" data-value="123456789012"
+                                data-font="OCR-B" data-fontsize="12" data-textposition="bottom" data-textmargin="0"
+                                data-fontoptions="" data-textalign="center" data-displayvalue="true" data-width="1"
+                                data-margintop="1" data-marginleft="1" data-marginright="1" data-marginbottom="1"
+                                data-flat="true" data-height="20"></canvas>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Itens</h3>
+
+                    <ul class="menu-list p-0">
+                        <li class="cursor-move list-none flex align-middle hover:bg-gray-100 hover:text-blue-600 p-2 m-1 rounded-lg"
+                            draggable="true" ondragstart="drag(event)" ondblclick="drop(event)" data-id="span">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
+                            </svg>
+                            <span class="p-0.5 ml-2">Texto</span>
+                        </li>
+                        <li class="cursor-move list-none flex align-middle hover:bg-gray-100 hover:text-blue-600 p-2 m-1 rounded-lg"
+                            draggable="true" ondragstart="drag(event)" ondblclick="drop(event)" data-id="img">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                            </svg>
+                            <span class="p-0.5 ml-2">Imagem</span>
+                        </li>
+                        <li class="cursor-move list-none flex align-middle hover:bg-gray-100 hover:text-blue-600 p-2 m-1 rounded-lg"
+                            draggable="true" ondragstart="drag(event)" ondblclick="drop(event)" data-id="hr">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                            <span class="p-0.5 ml-2">Linha</span>
+                        </li>
+                        <li class="cursor-move list-none flex align-middle hover:bg-gray-100 hover:text-blue-600 p-2 m-1 rounded-lg"
+                            draggable="true" ondragstart="drag(event)" ondblclick="drop(event)" data-id="barcode">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
+                            </svg>
+                            <span class="p-0.5 ml-2">Código de barras</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Arquivo</h3>
+
+                    <label class="block text-sm font-medium" for="input-json">Selecione uma lista de etiquteta</label>
+                    <div class="flex align-middle">
+                        <input
+                            class="bg-gray-100 border border-solid border-gray-300 text-sm rounded-s-lg focus:ring-blue-500 focus:border-blue-500 block w-full placeholder-gray-400 outline-none box-border file:overflow-hidden file:rounded-none file:cursor-pointer file:border-0 file:border-solid file:border-inherit file:bg-gray-100 file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] file:p-2.5 hover:file:bg-gray-200 !border-r-0"
+                            type="file" id="input-json" accept=".json" />
+                        <button onclick="printElement(event)"
+                            class="bg-gray-100 border border-solid border-gray-300 text-sm rounded-e-lg focus:ring-blue-500p-2 broder-l-0 hover:text-blue-600 cursor-pointer active:bg-blue-50 hover:border-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400" id="file_input_help">
+                        O arquivo deve ser no formato JSON.
+                    </p>
+
+                    <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Conteúdo</h3>
+
+                    <label class="block text-sm font-medium" for="html-content">Conteudo gerado</label>
+                    <textarea name="html-content" id="html-content" class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border !border-b-0 clic" cols="30" rows="10"></textarea>
+                    <button onclick="replaceHtmlToNew($('#html-content').val())" class="hover:text-red-500 hover:border-red-600 cursor-pointer border-solid border-gray-300 bg-gray-100 border-[1px] rounded-b-lg w-full relative p-2.5 flex-auto active:bg-red-50">Substituir</button>
+                </div>
+            </div>
+            <div class="lg:flex lg:w-2/4 lg:h-full overflow-hidden overflow-y-auto w-full h-auto p-4 lg:bg-white box-border hidden flex-col"
+                id="tag" tab-content>
+                <div id="container" class="w-full">
+                    <div id="selected-element"
+                        class="h-5 mb-4 border-b border-solid border-1 border-l-0 border-r-0 border-t-0 border-gray-200 p-2 text-sm text-gray-600 whitespace-nowrap">
+                        Nenhum elemento selecionado</div>
+                    <div id="replaceable">
+                        <div id="page" data-columns="1" data-rows="1" data-scale="0.262" data-dpi="300"
+                            data-orientation="l"
+                            style="background-color: rgb(177, 189, 226); overflow: hidden; position: relative; width: 300px; display: block;">
+                            <div id="row" style="display: flex; overflow: hidden;">
+                                <div id="content"
+                                    style="background-color: aliceblue; overflow: hidden; position: relative; height: 200px; width: 200px; float: left; display: flex;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block border-solid border-t-[1px] border-l-0 border-r-0 border-b-0 mt-4 border-gray-200 ">
+                    <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Elementos da etiqueta</h3>
+                    <ul id="elements-list" class="p-0"></ul>
+                </div>
+            </div>
+            <div class="lg:flex lg:w-1/4 lg:h-full overflow-hidden overflow-y-auto w-full h-auto p-4 lg:border-solid lg:border-r-0 lg:border-b-0 lg:border-t-0 lg:border-l lg:border-gray-200 box-border hidden"
+                id="settings" tab-content>
+                <div class="w-full h-min">
+                    <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Valor</h3>
+
+                    <label class="block text-sm font-medium" for="input-value">Valor</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="text" onchange="textContentChange(event)" id="input-value" />
+
+                    <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Posição</h3>
+
+                    <label class="block text-sm font-medium" for="input-top">Topo (px)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" onchange="styleChange(event)" id="input-top" data-style="top"
+                        data-sufix="px" />
+                    <br />
+                    <label class="block text-sm font-medium" for="input-left">Esquerda (px)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" onchange="styleChange(event)" id="input-left" data-style="left"
+                        data-sufix="px" />
+                    <br />
+                    <label class="block text-sm font-medium" for="input-transform">Transformar</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="text" onchange="styleChange(event)" id="input-transform" data-style="transform" />
+                    <br />
+                    <label class="block text-sm font-medium" for="input-zindex">Profundidade</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="1" onchange="styleChange(event)" id="input-zindex"
+                        data-style="z-index" />
+
+                    <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Estilo</h3>
+
+                    <label class="block text-sm font-medium" for="input-width">Largura (px)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="1" onchange="styleChange(event)" id="input-width"
+                        data-style="width" />
+                    <br />
+                    <label class="block text-sm font-medium" for="input-height">Altura (px)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="1" onchange="styleChange(event)" id="input-height"
+                        data-style="height" />
+                    <br />
+                    <label class="block text-sm font-medium" for="input-fontfamily">Fonte</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="text" onchange="styleChange(event)" id="input-fontfamily" data-style="font-family" />
+                    <br />
+                    <label class="block text-sm font-medium" for="input-fontsize">Tamanho da fonte (px)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="1" min="1" onchange="styleChange(event)" id="input-fontsize" data-sufix="px"
+                        data-style="font-size" />
+                    <br />
+                    <label class="block text-sm font-medium" for="input-lineheight">Espaçamento entre linhas
+                        (px)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="1" min="0" onchange="styleChange(event)" id="input-lineheight"
+                        data-sufix="px" data-style="line-height" />
+                    <br />
+                    <div class="flex">
+                        <div class="flex items-center mr-5">
+                            <input
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-600 outline-none"
+                                type="checkbox" onchange="styleChange(event)" id="input-fontstyle"
+                                data-style="font-style" data-value="italic" />
+                            <label class="block text-sm font-medium ml-2" for="input-fontstyle">Itálico</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-600 outline-none"
+                                type="checkbox" onchange="styleChange(event)" id="input-fontweight"
+                                data-style="font-weight" data-value="700" />
+                            <label class="block text-sm font-medium ml-2" for="input-fontweight">Negrito</label>
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <label class="block text-sm font-medium" for="input-color">Cor</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="text" onchange="styleChange(event)" id="input-color" data-style="color" />
+                    <br />
+                    <label class="block text-sm font-medium" for="input-alignitems">Alinhamento vertical</label>
+                    <select
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        name="input-alignitems" id="input-alignitems" onchange="styleChange(event)"
+                        data-style="align-items">
+                        <option value="baseline">Topo</option>
+                        <option value="center">Centro</option>
+                        <option value="end">Fundo</option>
+                    </select>
+                    <br />
+                    <label class="block text-sm font-medium" for="input-justifycontent">Alinhamento do conteúdo</label>
+                    <select
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        name="input-justifycontent" id="input-justifycontent" onchange="styleChange(event)"
+                        data-style="justify-content">
+                        <option value="left">Esquerda</option>
+                        <option value="right">Direita</option>
+                        <option value="center">Centro</option>
+                        <option value="end">Fundo</option>
+                    </select>
+                    <br />
+                    <label class="block text-sm font-medium" for="input-textalign">Alinhamento do texto</label>
+                    <select
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        name="input-textalign" id="input-textalign" onchange="styleChange(event)"
+                        data-style="text-align">
+                        <option value="left">Esquerda</option>
+                        <option value="right">Direita</option>
+                        <option value="center">Centro</option>
+                        <option value="end">Fundo</option>
+                        <option value="justify">Justificado</option>
+                    </select>
+                    <br />
+                    <label class="block text-sm font-medium" for="input-borderstyle">Tipo da borda</label>
+                    <select
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        name="input-borderstyle" id="input-borderstyle" onchange="styleChange(event)"
+                        data-style="border-style">
+                        <option value=""></option>
+                        <option value="solid">Solida</option>
+                        <option value="dashed">Tracejado</option>
+                        <option value="dotted">Pontilhado</option>
+                    </select>
+                    <br />
+                    <label class="block text-sm font-medium" for="input-borderwidth">Tamanho da borda (px)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="1" min="1" onchange="styleChange(event)" id="input-borderwidth"
+                        data-style="border-width" />
+                    <br />
+                    <label class="block text-sm font-medium" for="input-bordercolor">Cor da borda</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="text" onchange="styleChange(event)" id="input-bordercolor" data-style="border-color" />
+                    <br />
+                    <label class="block text-sm font-medium" for="input-borderradius">Arredondamento da borda
+                        (%)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="1" min="0" onchange="styleChange(event)" id="input-borderradius"
+                        data-style="border-radius" data-sufix="%" />
+                    <br />
+                    <label class="block text-sm font-medium" for="input-background">Fundo</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="text" onchange="styleChange(event)" id="input-background" data-style="background" />
+
+                    <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Código de barras</h3>
+
+                    <label class="block text-sm font-medium" for="barcode-width">Largura (px)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="1" min="1" onchange="barcodeDataChange(event)" id="barcode-width"
+                        data-property="data-width" />
+                    <br />
+                    <label class="block text-sm font-medium" for="barcode-height">Altura (px)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="1" min="1" onchange="barcodeDataChange(event)" id="barcode-height"
+                        data-property="data-height" />
+                    <br />
+                    <label class="block text-sm font-medium" for="barcode-textmargin">Margem do código (px)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="1" onchange="barcodeDataChange(event)" id="barcode-textmargin"
+                        data-property="data-textmargin" />
+                    <br />
+                    <label class="block text-sm font-medium" for="barcode-font">Fonte</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="text" onchange="barcodeDataChange(event)" id="barcode-font" data-property="data-font" />
+                    <br />
+                    <label class="block text-sm font-medium" for="barcode-fontsize">Tamanho da fonte</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="1" min="1" onchange="barcodeDataChange(event)" id="barcode-fontsize"
+                        data-property="data-fontsize" />
+                    <br />
+                    <label class="block text-sm font-medium" for="barcode-format">Formato</label>
+                    <select
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        name="barcode-format" id="barcode-format" onchange="barcodeDataChange(event)"
+                        data-property="data-format">
+                        <option value="CODE128B">Code 128 B</option>
+                        <option value="EAN13">EAN 13</option>
+                        <option value="EAN8">EAN 8</option>
+                        <option value="CODE39">CODE39</option>
+                        <option value="ITF14">ITF-14</option>
+                        <option value="MSI">MSI</option>
+                    </select>
+                    <br />
+                    <label class="block text-sm font-medium" for="barcode-textposition">Posição do código</label>
+                    <select
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        name="barcode-textposition" id="barcode-textposition" onchange="barcodeDataChange(event)"
+                        data-property="data-textposition">
+                        <option value="top">Acima</option>
+                        <option value="bottom">Abaixo</option>
+                    </select>
+                    <br />
+                    <label class="block text-sm font-medium" for="barcode-textalign">Posição do código</label>
+                    <select
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        name="barcode-textalign" id="barcode-textalign" onchange="barcodeDataChange(event)"
+                        data-property="data-textalign">
+                        <option value="center">Centro</option>
+                        <option value="right">Direita</option>
+                        <option value="left">Esquerda</option>
+                    </select>
+                    <br />
+                    <label class="block text-sm font-medium" for="barcode-fontoptions">Estilo</label>
+                    <select
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        name="barcode-fontoptions" id="barcode-fontoptions" onchange="barcodeDataChange(event)"
+                        data-property="data-fontoptions">
+                        <option value=""></option>
+                        <option value="bold">Negrito</option>
+                        <option value="italic">Itálico</option>
+                        <option value="bold italic">Negrito e Itálico</option>
+                    </select>
+                    <br />
+                    <div class="flex items-center">
+                        <input
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-600 outline-none"
+                            type="checkbox" onchange="barcodeDataChange(event)" id="input-barcode-display-value"
+                            data-property="data-displayvalue" />
+                        <label class="block text-sm font-medium ml-2" for="input-barcode-display-value">Mostrar
+                            código</label>
+                    </div>
+
+                    <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Etiqueta</h3>
+
+                    <label class="block text-sm font-medium" for="label-width">Largura (mm)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="1" onchange="labelPropertyChange(event)" id="label-width"
+                        data-style="width" />
+                    <br />
+                    <label class="block text-sm font-medium" for="label-height">Altura (mm)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="1" onchange="labelPropertyChange(event)" id="label-height"
+                        data-style="height" />
+                    <br />
+                    <label class="block text-sm font-medium" for="label-marginleft">Espaçamento entre etiquetas
+                        (mm)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="0" onchange="labelPropertyChange(event)" id="label-marginleft"
+                        data-style="margin-left" />
+                    <br />
+                    <label class="block text-sm font-medium" for="label-margintop">Espaçamento no topo (mm)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="0" onchange="labelPropertyChange(event)" id="label-margintop"
+                        data-style="margin-top" />
+
+                    <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Folha</h3>
+
+                    <label class="block text-sm font-medium" for="page-width">Largura (mm)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="1" onchange="pagePropertyChange(event)" id="page-width"
+                        data-style="width" />
+                    <br />
+                    <label class="block text-sm font-medium" for="page-marginleft">Margem esquerda (mm)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="0" onchange="pagePropertyChange(event)" id="page-marginleft"
+                        data-style="margin-left" />
+                    <br />
+                    <label class="block text-sm font-medium" for="page-marginright">Margem direita (mm)</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="0" onchange="pagePropertyChange(event)" id="page-marginright"
+                        data-style="margin-right" />
+                    <br />
+                    <label class="block text-sm font-medium" for="page-columns">Colunas</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="1" onchange="pagePropertyChange(event)" id="page-columns"
+                        data-property="data-columns" />
+                    <br />
+                    <label class="block text-sm font-medium" for="page-rows">Linhas</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="1" onchange="pagePropertyChange(event)" id="page-rows"
+                        data-property="data-rows" />
+                    <br />
+                    <label class="block text-sm font-medium" for="page-orientation">Orientação</label>
+                    <select
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        name="page-orientation" id="page-orientation" onchange="pagePropertyChange(event)"
+                        data-property="data-orientation">
+                        <option value="l">Paisagem</option>
+                        <option value="p">Retrato</option>
+                    </select>
+
+                    <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Configurações</h3>
+
+                    <label class="block text-sm font-medium" for="page-fator">Fator de Multiplicação</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="0.00001" value="0.99013" onchange="pagePropertyChange(event)"
+                        id="page-fator" data-property="data-fator" />
+                    <br />
+                    <label class="block text-sm font-medium" for="page-scale">Escala</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="0.001" value="0.262" onchange="pagePropertyChange(event)"
+                        id="page-scale" data-property="data-scale" />
+                    <br />
+                    <label class="block text-sm font-medium" for="page-dpi">DPI</label>
+                    <input
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        type="number" step="any" min="0" value="300" onchange="pagePropertyChange(event)" id="page-dpi"
+                        data-property="data-dpi" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="fixed bottom-0">
+        footer
+    </footer>
+
+    <script src="./js/epLabelBuilder.js"></script>
+</body>
+
+</html>
