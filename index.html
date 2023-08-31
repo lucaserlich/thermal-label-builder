@@ -15,39 +15,39 @@
     <script src="./js/jquery-ui.min.js"></script>
     <script src="./js/jquery.ui.rotatable.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./css/jquery-ui.css"/>
-    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="./css/loading.css"/>
-    <link rel="stylesheet" type="text/css" href="./css/scrollbar.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/loading.css" />
+    <link rel="stylesheet" type="text/css" href="./css/scrollbar.css" />
     <link rel="stylesheet" type="text/css" href="./css/jquery.ui.rotatable.css" />
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
-    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
 
-    <meta property="og:site_name" content="EPconnect"/>
+    <meta property="og:site_name" content="EPconnect" />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:title" content="EP Label Builder"/>
-    <meta property="og:description" content="EP Label Builder, um construtor de etiquetas térmicas"/>
-    <meta property="og:image" content="https://epconnect.com.br/src/img/epconnect.png"/>
-    <meta property="og:url" content="https://epconnect.com.br"/>
-    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="EP Label Builder" />
+    <meta property="og:description" content="EP Label Builder, um construtor de etiquetas térmicas" />
+    <meta property="og:image" content="https://epconnect.com.br/src/img/epconnect.png" />
+    <meta property="og:url" content="https://epconnect.com.br" />
+    <meta property="og:type" content="article" />
 
     <meta itemprop="name" content="EP Label Builder">
-    <meta name="description" content="EP Label Builder, um construtor de etiquetas térmicas"/>
+    <meta name="description" content="EP Label Builder, um construtor de etiquetas térmicas" />
     <meta itemprop="url" content="https://epconnect.com.br">
 </head>
 
 <body class="h-full m-0 lg:overflow-hidden bg-gray-50 font-sans">
     <div id="loading"
-            style="display: none; position: fixed; width: 100%; height: 100%; z-index: 9999; background: rgb(0, 0, 0, 0.5);">
-            <ul class="drops blue">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
+        style="display: none; position: fixed; width: 100%; height: 100%; z-index: 9999; background: rgb(0, 0, 0, 0.5);">
+        <ul class="drops blue">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
 
     <div class="lg:hidden">
         <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-solid border-b border-t-0 border-l-0 border-r-0 border-gray-200 bg-white m-0"
@@ -77,8 +77,9 @@
                             style="overflow: hidden; cursor: move; position: hidden; display: flex; align-items: baseline; font-family: Arial; z-index: 1; height: fit-content;">Texto</span>
                         <div id="img" tabindex="1" data-id="img"
                             style="display:inline-block; overflow: hidden; cursor: move; position: hidden; z-index: 1; height: fit-content;">
-                            <img tabindex="-1" src="https://www.google.com.br/images/srpr/logo3w.png" alt=""
-                                style="width: 100%; height: 100%;" />
+                            <img tabindex="-1"
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAiCAYAAAAkjjtxAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUY2Q0UwNzU2OEJBMTFFODkyNEJGQTEyNUJEODI3QkEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUY2Q0UwNzY2OEJBMTFFODkyNEJGQTEyNUJEODI3QkEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBRjZDRTA3MzY4QkExMUU4OTI0QkZBMTI1QkQ4MjdCQSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBRjZDRTA3NDY4QkExMUU4OTI0QkZBMTI1QkQ4MjdCQSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PhxGzVUAAAJhSURBVHja1JjPSxRhGMd3bNS1pfxBKhZ06NBGhIcQQSrZgx0UMZhLbt7qZhD0RwSBkOLZkx3Ek4JSKOFBED1UeNGLZoegpbKitMz2x/R94JkYhvednXHfd5l54HN59/3x3Zfn17yGbVkJBTYDBsAvYFSwTw2vPwDr4DlYck8wFYilQ86Bs4wKawWXwAiYBY/AZ+cwFXac0Gd3wQJoVylYt3WDiTgJJhsGt0yNBxyCOXaXBmCXmU/BludLHAJNgjlZnYIpSEZZeFjrBS9Ayusaul3ipBeyCl4Lxi+oEFwCfyXjP0+45zVwWTD+1ZT4Ug+4ARr5YNtVEAxX/qXfinyA19rAJPgd8KYdH06CO6BDMOetd6MMeAKu88JKjIrIQ8UutugW/Bg8i3Ba26AC4vjw/YiL/QjugSMSfBGMR1gsZYt+8N5JO1mfpoWi/49P0DhBlxLMod9+cMAGTW8GQ4G6A16Cp3zG/zx5W7J4Gkzx4toygqnO3/T8luNu67vPepHgGi4227LEnhaMb4EHoBDwoC+CsSOwFmKPwL1snWB8N+RBoqb9FGjRUTpLkqSfZiF+/mfzH2uuVgTKxHSBFb4ls0xZLui4ybCCKUjORzHHxamB1y7YiJvgFh2iZT78Acy7EnkYK/Jnf47fF6oieJPfAiLpw6IbPBPloPsmeQfIRFEwucQbcMUzfpp9eJo7tqSkIsqqXz33sGPcU6hLPbZlDfJTkGqjhugq2FftEotgWZPgkg4fTvCDx16cKt070AdeKdw7qbtw0DcTPUpb/FHayU1QPuSeNn8yfVLdvJP9E2AAVmVzGSbP+r0AAAAASUVORK5CYII="
+                                alt="" style="width: 100%; height: 100%;" />
                         </div>
                         <hr id="hr" tabindex="1" data-id="hr" size="10"
                             style="width: 50px; border-width: 1px 0px 0px 0px; border-style: solid; border-color: rgb(0, 0, 0); overflow: hidden; cursor: move; position: hidden; z-index: 1; height: fit-content;">
@@ -155,8 +156,11 @@
                     <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Conteúdo</h3>
 
                     <label class="block text-sm font-medium" for="html-content">Conteudo gerado</label>
-                    <textarea name="html-content" id="html-content" class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border !border-b-0 clic" cols="30" rows="10"></textarea>
-                    <button onclick="replaceHtmlToNew($('#html-content').val())" class="hover:text-red-500 hover:border-red-600 cursor-pointer border-solid border-gray-300 bg-gray-100 border-[1px] rounded-b-lg w-full relative p-2.5 flex-auto active:bg-red-50">Substituir</button>
+                    <textarea name="html-content" id="html-content"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border !border-b-0 clic"
+                        cols="30" rows="10"></textarea>
+                    <button onclick="replaceHtmlToNew($('#html-content').val())"
+                        class="hover:text-red-500 hover:border-red-600 cursor-pointer border-solid border-gray-300 bg-gray-100 border-[1px] rounded-b-lg w-full relative p-2.5 flex-auto active:bg-red-50">Substituir</button>
                 </div>
             </div>
             <div class="lg:flex lg:w-2/4 lg:h-full overflow-hidden overflow-y-auto w-full h-auto p-4 lg:bg-white box-border hidden flex-col"
