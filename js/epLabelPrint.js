@@ -4,7 +4,7 @@
     const epLabelPrint = {
         interpolateStringTemplate: function (tmpl, data, defaultValue = '?', reg) {
             return tmpl.replace(reg || /\${([^{}]*)}/g, function (a, b) {
-                try { return new Function('data', ['with(data){return ', b, ' || \'', (defaultValue || ''), '\';}'].join(''))(data); }
+                try { return new Function('data', ['with(data){return ', b, ' ?? \'', (defaultValue || ''), '\';}'].join(''))(data); }
                 catch (e) { return defaultValue || ''; }
             });
         },
