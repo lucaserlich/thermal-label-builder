@@ -44,7 +44,7 @@ Fist, include all this dependencies, in this sequence, in your page.
 
 Or, in ES6, ensure the modules `jquery`, `html2canvas`, `jsBarcode`, `jspdf` is imported in your project, and import the `epLabelPrint`:
 ```javascript
-import { epLabelPrint } from 'resources/js/epLabelPrint';
+import { epLabelPrint } from 'js/epLabelPrint';
 ```
 
 Second, add the sample code to generate the PDF with your label template and JSON data.
