@@ -28,7 +28,9 @@ https://epconnect.com.br/criaretiqueta/
 # Using
 Download de project, put all files in you server, open `./index.html` and have fun. If you start localy without a server, go to the last lines on file `./js/epLabelPrint.js` and follow the instructions.
 
-To generate the PDF, create your template or add the content in `./sample/*.txt` to the `textarea`  element in page, and click on replace to apply the template. After this, create your JSON file with the your data and selected then in input file, and click in rocket to generate.
+In your template, use this `${jsonPropertyHere}` to replace the template content with the JSON content.
+
+To generate the PDF, create your template or add the content in `./sample/*.txt` to the `textarea` element in page, and click on replace to apply the template. After this, create your JSON file with the your data and selected then in input file, and click in rocket to generate.
 
 # Using in external project
 Fist, include the `./js/epLabelPrint.js` in your page.
