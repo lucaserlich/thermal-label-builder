@@ -10,11 +10,11 @@
     position: absolute;
 }
 
-/* div[data-id='barcode'] canvas {
+div[data-id='barcode'] canvas {
     max-width: 100%;    
     display: block;
     margin: 0 auto;
-} */
+}
 
 *[data-id]:focus .ui-rotatable-handle {
     display: block;

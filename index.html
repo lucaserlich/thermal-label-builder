@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EP Label Builder</title>
     <script src="./js/jquery.min.js"></script>
+    <script src="./js/html2canvas.min.js"></script>
     <script src="./js/jsBarcode.all.min.js"></script>
-    <script defer src="./js/epLabelPrint.js"></script>
+    <script src="./js/jspdf.umd.min.js"></script>
+    <script defer type="module" src="./js/epLabelPrint.js"></script>
+
     <script src="./js/tailwind.js"></script>
     <script src="./js/tailwind.config.js"></script>
     <script defer>tailwind.config = getTailwindConfig();</script>
@@ -85,7 +88,7 @@
                             style="width: 50px; border-width: 1px 0px 0px 0px; border-style: solid; border-color: rgb(0, 0, 0); overflow: hidden; cursor: move; position: hidden; z-index: 1; height: fit-content;">
                         <div id="barcode" tabindex="1" data-id="barcode" data-code-tag="${codigo}"
                             style="display:inline-block; overflow: hidden; cursor: move; position: hidden; z-index: 1; height: fit-content;">
-                            <canvas class="w-full block my-0 mx-auto" data-format="EAN13" data-value="123456789012"
+                            <canvas data-format="EAN13" data-value="123456789012"
                                 data-font="OCR-B" data-fontsize="12" data-textposition="bottom" data-textmargin="0"
                                 data-fontoptions="" data-textalign="center" data-displayvalue="true" data-width="1"
                                 data-margintop="1" data-marginleft="1" data-marginright="1" data-marginbottom="1"

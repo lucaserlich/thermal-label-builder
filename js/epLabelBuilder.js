@@ -158,7 +158,7 @@ function applyEventsOnElement(el, propertie) {
 }
 
 function updateTextOfSelectedElement(element) {
-    if (element) {
+    if ((element || $('')).length > 0) {
         const value = element.attr('id').startsWith('barcode') ? element.find('canvas').attr('data-code-tag') : element.attr('data-value');
         $('#selected-element').html(`${value ? value : '?'} <span class="text-xs">(${element.attr('id')})</span>`);
     } else $('#selected-element').html('Nenhum elemento selecionado');

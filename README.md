@@ -26,24 +26,33 @@ https://epconnect.com.br/criaretiqueta/
 ```
 
 # Using
-Download de project, put all files in you server, open `./index.html` and have fun. If you start localy without a server, go to the last lines on file `./js/epLabelPrint.js` and follow the instructions.
+Download de project, put all files in you server, open `./index.html` and have fun.
 
 In your template, use this `${jsonPropertyHere}` to replace the template content with the JSON content.
 
 To generate the PDF, create your template or add the content in `./sample/*.txt` to the `textarea` element in page, and click on replace to apply the template. After this, create your JSON file with the your data and selected then in input file, and click in rocket to generate.
 
 # Using in external project
-Fist, include the `./js/epLabelPrint.js` in your page.
+Fist, include all this dependencies, in this sequence, in your page.
 ```html
-<script defer src="./js/epLabelPrint.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/html2canvas.min.js"></script>
+<script src="./js/jsBarcode.all.min.js"></script>
+<script src="./js/jspdf.umd.min.js"></script>
+<script defer type="module" src="./js/epLabelPrint.js"></script>
+```
+
+Or, in ES6, ensure the modules `jquery`, `html2canvas`, `jsBarcode`, `jspdf` is imported in your project, and import the `epLabelPrint`:
+```javascript
+import { epLabelPrint } from 'resources/js/epLabelPrint';
 ```
 
 Second, add the sample code to generate the PDF with your label template and JSON data.
 ```javascript
-var template = `{your of generated HTML template here}`;
-var data = `{your JSON data here}`;
-
+const template = `{your of generated HTML template here}`;
+const data = `{your JSON data here}`;
 const epLabelPrint = window.epLabelPrint;
+
 epLabelPrint.printElementInPDF(
     epLabelPrint.generateElementToPrintOfString(data, template)
 ).then(doc => {
