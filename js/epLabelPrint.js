@@ -24,6 +24,9 @@ export class EPLabelPrint {
                     #page, #content { background: #fff !important; }
                     html { height: fit-content !important; }
                     body { overflow: auto; margin: 0; color: #000; }
+                    .draggable {
+                        position: absolute;
+                    }
                     div[data-id='barcode'] canvas {
                         max-width: 100%;
                         display: block;
