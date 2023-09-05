@@ -72,7 +72,7 @@
 
     <div class="lg:h-screen lg:flex h-auto">
         <div class="lg:flex lg:flex-1 h-aut" id="tab">
-            <div class="lg:flex lg:w-1/4 lg:h-full overflow-hidden overflow-y-auto w-full h-auto p-4 lg:border-solid lg:border-r lg:border-b-0 lg:border-t-0 lg:border-l-0 lg:border-gray-200 box-border active"
+            <div class="lg:flex lg:w-1/4 lg:h-full overflow-hidden overflow-y-auto w-full h-auto p-4 lg:border-solid lg:border-r lg:border-b-0 lg:border-t-0 lg:border-l-0 lg:border-gray-200 active"
                 id="palette" tab-content>
                 <div class="w-full h-min">
                     <div class="hidden h-fit">
@@ -141,7 +141,7 @@
                     <label class="block text-sm font-medium" for="input-json">Selecione uma lista de etiquteta</label>
                     <div class="flex align-middle">
                         <input
-                            class="bg-gray-100 border border-solid border-gray-300 text-sm rounded-s-lg focus:ring-blue-500 focus:border-blue-500 block w-full placeholder-gray-400 outline-none box-border file:overflow-hidden file:rounded-none file:cursor-pointer file:border-0 file:border-solid file:border-inherit file:bg-gray-100 file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] file:p-2.5 hover:file:bg-gray-200 !border-r-0"
+                            class="bg-gray-100 border border-solid border-gray-300 text-sm rounded-s-lg focus:ring-blue-500 focus:border-blue-500 block w-full placeholder-gray-400 outline-none file:overflow-hidden file:rounded-none file:cursor-pointer file:border-0 file:border-solid file:border-inherit file:bg-gray-100 file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] file:p-2.5 hover:file:bg-gray-200 !border-r-0"
                             type="file" id="input-json" accept=".json" />
                         <button onclick="printElement(event)"
                             class="bg-gray-100 border border-solid border-gray-300 text-sm rounded-e-lg focus:ring-blue-500p-2 broder-l-0 hover:text-blue-600 cursor-pointer active:bg-blue-50 hover:border-blue-600">
@@ -160,17 +160,17 @@
 
                     <label class="block text-sm font-medium" for="html-content">Conteudo gerado</label>
                     <textarea name="html-content" id="html-content"
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border !border-b-0 clic"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none !border-b-0 clic"
                         cols="30" rows="10"></textarea>
                     <button onclick="replaceHtmlToNew($('#html-content').val())"
                         class="hover:text-red-500 hover:border-red-600 cursor-pointer border-solid border-gray-300 bg-gray-100 border-[1px] rounded-b-lg w-full relative p-2.5 flex-auto active:bg-red-50">Substituir</button>
                 </div>
             </div>
-            <div class="lg:flex lg:w-2/4 lg:h-full overflow-hidden overflow-y-auto w-full h-auto p-4 lg:bg-white box-border hidden flex-col"
+            <div class="lg:flex lg:w-2/4 lg:h-full overflow-hidden overflow-y-auto w-full h-auto p-4 lg:bg-white hidden flex-col"
                 id="tag" tab-content>
                 <div id="container" class="w-full">
                     <div id="selected-element"
-                        class="h-5 mb-4 border-b border-solid border-1 border-l-0 border-r-0 border-t-0 border-gray-200 p-2 text-sm text-gray-600 whitespace-nowrap">
+                        class="h-5 mb-4 border-b border-solid border-1 border-l-0 border-r-0 border-t-0 border-gray-200 p-2 text-sm text-gray-600 whitespace-nowrap h-auto">
                         Nenhum elemento selecionado</div>
                     <div id="replaceable">
                         <div id="page" data-columns="1" data-rows="1" data-scale="0.262" data-dpi="300"
@@ -189,38 +189,38 @@
                     <ul id="elements-list" class="p-0"></ul>
                 </div>
             </div>
-            <div class="lg:flex lg:w-1/4 lg:h-full overflow-hidden overflow-y-auto w-full h-auto p-4 lg:border-solid lg:border-r-0 lg:border-b-0 lg:border-t-0 lg:border-l lg:border-gray-200 box-border hidden"
+            <div class="lg:flex lg:w-1/4 lg:h-full overflow-hidden overflow-y-auto w-full h-auto p-4 lg:border-solid lg:border-r-0 lg:border-b-0 lg:border-t-0 lg:border-l lg:border-gray-200 hidden"
                 id="settings" tab-content>
                 <div class="w-full h-min">
                     <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Valor</h3>
 
                     <label class="block text-sm font-medium" for="input-value">Valor</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="text" onchange="textContentChange(event)" id="input-value" />
 
                     <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Posição</h3>
 
                     <label class="block text-sm font-medium" for="input-top">Topo (px)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" onchange="styleChange(event)" id="input-top" data-style="top"
                         data-sufix="px" />
                     <br />
                     <label class="block text-sm font-medium" for="input-left">Esquerda (px)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" onchange="styleChange(event)" id="input-left" data-style="left"
                         data-sufix="px" />
                     <br />
                     <label class="block text-sm font-medium" for="input-transform">Transformar</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="text" onchange="styleChange(event)" id="input-transform" data-style="transform" />
                     <br />
                     <label class="block text-sm font-medium" for="input-zindex">Profundidade</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="1" onchange="styleChange(event)" id="input-zindex"
                         data-style="z-index" />
 
@@ -228,31 +228,31 @@
 
                     <label class="block text-sm font-medium" for="input-width">Largura (px)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="1" onchange="styleChange(event)" id="input-width"
                         data-style="width" />
                     <br />
                     <label class="block text-sm font-medium" for="input-height">Altura (px)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="1" onchange="styleChange(event)" id="input-height"
                         data-style="height" />
                     <br />
                     <label class="block text-sm font-medium" for="input-fontfamily">Fonte</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="text" onchange="styleChange(event)" id="input-fontfamily" data-style="font-family" />
                     <br />
                     <label class="block text-sm font-medium" for="input-fontsize">Tamanho da fonte (px)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="1" min="1" onchange="styleChange(event)" id="input-fontsize" data-sufix="px"
                         data-style="font-size" />
                     <br />
                     <label class="block text-sm font-medium" for="input-lineheight">Espaçamento entre linhas
                         (px)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="1" min="0" onchange="styleChange(event)" id="input-lineheight"
                         data-sufix="px" data-style="line-height" />
                     <br />
@@ -277,12 +277,12 @@
                     <br />
                     <label class="block text-sm font-medium" for="input-color">Cor</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="text" onchange="styleChange(event)" id="input-color" data-style="color" />
                     <br />
                     <label class="block text-sm font-medium" for="input-alignitems">Alinhamento vertical</label>
                     <select
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         name="input-alignitems" id="input-alignitems" onchange="styleChange(event)"
                         data-style="align-items">
                         <option value="baseline">Topo</option>
@@ -292,7 +292,7 @@
                     <br />
                     <label class="block text-sm font-medium" for="input-justifycontent">Alinhamento do conteúdo</label>
                     <select
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         name="input-justifycontent" id="input-justifycontent" onchange="styleChange(event)"
                         data-style="justify-content">
                         <option value="left">Esquerda</option>
@@ -303,7 +303,7 @@
                     <br />
                     <label class="block text-sm font-medium" for="input-textalign">Alinhamento do texto</label>
                     <select
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         name="input-textalign" id="input-textalign" onchange="styleChange(event)"
                         data-style="text-align">
                         <option value="left">Esquerda</option>
@@ -315,7 +315,7 @@
                     <br />
                     <label class="block text-sm font-medium" for="input-borderstyle">Tipo da borda</label>
                     <select
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         name="input-borderstyle" id="input-borderstyle" onchange="styleChange(event)"
                         data-style="border-style">
                         <option value=""></option>
@@ -326,61 +326,61 @@
                     <br />
                     <label class="block text-sm font-medium" for="input-borderwidth">Tamanho da borda (px)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="1" min="1" onchange="styleChange(event)" id="input-borderwidth"
                         data-style="border-width" />
                     <br />
                     <label class="block text-sm font-medium" for="input-bordercolor">Cor da borda</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="text" onchange="styleChange(event)" id="input-bordercolor" data-style="border-color" />
                     <br />
                     <label class="block text-sm font-medium" for="input-borderradius">Arredondamento da borda
                         (%)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="1" min="0" onchange="styleChange(event)" id="input-borderradius"
                         data-style="border-radius" data-sufix="%" />
                     <br />
                     <label class="block text-sm font-medium" for="input-background">Fundo</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="text" onchange="styleChange(event)" id="input-background" data-style="background" />
 
                     <h3 class="text-2xl mb-5 mt-10 font-extrabold text-center uppercase">Código de barras</h3>
 
                     <label class="block text-sm font-medium" for="barcode-width">Largura (px)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="1" min="1" onchange="barcodeDataChange(event)" id="barcode-width"
                         data-property="data-width" />
                     <br />
                     <label class="block text-sm font-medium" for="barcode-height">Altura (px)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="1" min="1" onchange="barcodeDataChange(event)" id="barcode-height"
                         data-property="data-height" />
                     <br />
                     <label class="block text-sm font-medium" for="barcode-textmargin">Margem do código (px)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="1" onchange="barcodeDataChange(event)" id="barcode-textmargin"
                         data-property="data-textmargin" />
                     <br />
                     <label class="block text-sm font-medium" for="barcode-font">Fonte</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="text" onchange="barcodeDataChange(event)" id="barcode-font" data-property="data-font" />
                     <br />
                     <label class="block text-sm font-medium" for="barcode-fontsize">Tamanho da fonte</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="1" min="1" onchange="barcodeDataChange(event)" id="barcode-fontsize"
                         data-property="data-fontsize" />
                     <br />
                     <label class="block text-sm font-medium" for="barcode-format">Formato</label>
                     <select
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         name="barcode-format" id="barcode-format" onchange="barcodeDataChange(event)"
                         data-property="data-format">
                         <option value="CODE128B">Code 128 B</option>
@@ -393,7 +393,7 @@
                     <br />
                     <label class="block text-sm font-medium" for="barcode-textposition">Posição do código</label>
                     <select
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         name="barcode-textposition" id="barcode-textposition" onchange="barcodeDataChange(event)"
                         data-property="data-textposition">
                         <option value="top">Acima</option>
@@ -402,7 +402,7 @@
                     <br />
                     <label class="block text-sm font-medium" for="barcode-textalign">Posição do código</label>
                     <select
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         name="barcode-textalign" id="barcode-textalign" onchange="barcodeDataChange(event)"
                         data-property="data-textalign">
                         <option value="center">Centro</option>
@@ -412,7 +412,7 @@
                     <br />
                     <label class="block text-sm font-medium" for="barcode-fontoptions">Estilo</label>
                     <select
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         name="barcode-fontoptions" id="barcode-fontoptions" onchange="barcodeDataChange(event)"
                         data-property="data-fontoptions">
                         <option value=""></option>
@@ -434,26 +434,26 @@
 
                     <label class="block text-sm font-medium" for="label-width">Largura (mm)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="1" onchange="labelPropertyChange(event)" id="label-width"
                         data-style="width" />
                     <br />
                     <label class="block text-sm font-medium" for="label-height">Altura (mm)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="1" onchange="labelPropertyChange(event)" id="label-height"
                         data-style="height" />
                     <br />
                     <label class="block text-sm font-medium" for="label-marginleft">Espaçamento entre etiquetas
                         (mm)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="0" onchange="labelPropertyChange(event)" id="label-marginleft"
                         data-style="margin-left" />
                     <br />
                     <label class="block text-sm font-medium" for="label-margintop">Espaçamento no topo (mm)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="0" onchange="labelPropertyChange(event)" id="label-margintop"
                         data-style="margin-top" />
 
@@ -461,37 +461,37 @@
 
                     <label class="block text-sm font-medium" for="page-width">Largura (mm)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="1" onchange="pagePropertyChange(event)" id="page-width"
                         data-style="width" />
                     <br />
                     <label class="block text-sm font-medium" for="page-marginleft">Margem esquerda (mm)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="0" onchange="pagePropertyChange(event)" id="page-marginleft"
                         data-style="margin-left" />
                     <br />
                     <label class="block text-sm font-medium" for="page-marginright">Margem direita (mm)</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="0" onchange="pagePropertyChange(event)" id="page-marginright"
                         data-style="margin-right" />
                     <br />
                     <label class="block text-sm font-medium" for="page-columns">Colunas</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="1" onchange="pagePropertyChange(event)" id="page-columns"
                         data-property="data-columns" />
                     <br />
                     <label class="block text-sm font-medium" for="page-rows">Linhas</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="1" onchange="pagePropertyChange(event)" id="page-rows"
                         data-property="data-rows" />
                     <br />
                     <label class="block text-sm font-medium" for="page-orientation">Orientação</label>
                     <select
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         name="page-orientation" id="page-orientation" onchange="pagePropertyChange(event)"
                         data-property="data-orientation">
                         <option value="l">Paisagem</option>
@@ -502,19 +502,19 @@
 
                     <label class="block text-sm font-medium" for="page-fator">Fator de Multiplicação</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="0.00001" value="0.99013" onchange="pagePropertyChange(event)"
                         id="page-fator" data-property="data-fator" />
                     <br />
                     <label class="block text-sm font-medium" for="page-scale">Escala</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="0.001" value="0.262" onchange="pagePropertyChange(event)"
                         id="page-scale" data-property="data-scale" />
                     <br />
                     <label class="block text-sm font-medium" for="page-dpi">DPI</label>
                     <input
-                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none box-border"
+                        class="bg-gray-100 border border-solid border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 outline-none"
                         type="number" step="any" min="0" value="300" onchange="pagePropertyChange(event)" id="page-dpi"
                         data-property="data-dpi" />
                 </div>

@@ -21,6 +21,9 @@ export class EPLabelPrint {
         row.css('width', page.css('width'));
 
         element.append($(`<style>
+                    * {
+                        box-sizing: border-box;
+                    }
                     #page, #content { background: #fff !important; }
                     html { height: fit-content !important; }
                     body { overflow: auto; margin: 0; color: #000; }
